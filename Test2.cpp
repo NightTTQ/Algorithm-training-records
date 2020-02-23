@@ -1,58 +1,41 @@
+//#include <bits/stdc++.h>
 #include <iostream>
-#include <string>
 #include <cstdio>
-using namespace std;
-
-string bump(string nums, int index) 
-{
-    return to_string(atoi(nums.substr(0, index + 1).c_str()) + 1).append(nums.substr(index + 1));
-}
+#include <cstring>
+#include <algorithm>
+#include <cmath>
+#include <iomanip>
+#define fast_io()                \
+    ios::sync_with_stdio(false); \
+    std::cin.tie(0);
+using namespace std;  
+#define ll long long
+const ll mod = 1e9 + 7;
  
-int lazier(int num) 
+inline ll qpow(long long a, int b)
 {
-    string nums = to_string(num);
-    int bumped = 0;
-    int cnt;
-    do
+    int ans = 1;
+    a = (a % mod + mod) % mod;
+    for (; b; b >>= 1)
     {
-        cnt = 0;
-        bool flag;
-        for (int i = 0; i < nums.length() - 1; i++) 
-        {
-            flag = false;
-            while (nums[i] == nums[i + 1]) 
-            {
-                ++cnt;
-                flag = true;
-                //int tmp = nums.length();
-                nums = bump(nums, i + 1);
-                //i = nums.length() == tmp ? i : i + 1;
-            }
-            if (flag) 
-            {
-                bumped = i + 1;
-                break;
-            }
-        }
- 
-        if (bumped) 
-        {
-            for (int i = bumped + 1; i < nums.length(); i++) 
-            {
-                nums[i] = nums[i - 1] == '0' ? '1' : '0';
-            }
-        }
-    }while (cnt);
-    return atoi(nums.c_str());
-}
- 
-int main() 
-{
-    int num;
-    while (~scanf("%d", &num)) 
-    {
-        printf("%d\n", lazier(num));
+        if (b & 1) ans = (a * ans) % mod;
+        a = (a * a) % mod;
     }
-
-    return 0;
+    return ans;
 }
+ll C(ll n,ll m)
+{
+    return (n * qpow(m, mod - 2)) % mod;
+}
+int main()  
+{  
+    fast_io(); 
+    ll a, b;
+    while(cin >> a >> b)
+    
+   
+    cout << C(a,b) << endl;
+    
+    system("pause");
+    return 0;  
+} 
