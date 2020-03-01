@@ -1,10 +1,4 @@
-//#include <bits/stdc++.h>
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
-#include <cmath>
-#include <iomanip>
+#include <bits/stdc++.h>
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
