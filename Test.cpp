@@ -14,16 +14,15 @@ using namespace std;
 
 int main()
 {
+    string s;
     fast_io();
-    double a, b;
-    cin >> a >> b;
-    double ans;
-    ans = a / (b * b);
-    cout <<fixed<<setprecision(1)<< ans << endl;
-    if(ans>25)
-        cout << "PANG";
-    else
-        cout << "Hai Xing";
+    int n,ans=0;
+    cin >> n >> s;
+    int i;
+    cin >> i;
+    s.erase(i, 1);
+    cout << s;
+    ans++;
     system("pause");
     return 0;
 }
