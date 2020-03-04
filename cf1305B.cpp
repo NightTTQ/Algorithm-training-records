@@ -22,7 +22,6 @@ int main()
 {
     fast_io();
     bool flag=false;
-    int num = 0;
     cin >> s;
     vector<vector<int>> all;
     do
@@ -63,13 +62,13 @@ int main()
             all.push_back(del);
         }
     }while(flag);
-    cout << all.size() << endl;
+    cout << all.size() << '\n';
     for (int i = 0; i < all.size();i++)
     {
-        cout << all[i].size() << endl;
+        cout << all[i].size() << '\n';
         for (int j = 0; j < all[i].size() - 1;j++)
             cout << all[i][j] + 1 << " ";
-        cout << all[i][all[i].size() - 1] + 1 << endl;
+        cout << all[i][all[i].size() - 1] + 1 << '\n';
     }
     return 0;
 }
