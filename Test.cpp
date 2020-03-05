@@ -16,13 +16,21 @@ int main()
 {
     string s;
     fast_io();
-    int n,ans=0;
-    cin >> n >> s;
-    int i;
-    cin >> i;
-    s.erase(i, 1);
+    
+    while (cin >> s)
+    {
+        for (int k = 1; k <= s.length();k++)
+            string tmp = s;
+        for (int i = 0; i <= s.length()-k;i++)
+            reverse(tmp.begin() + i, tmp.begin() + i + k);
+
+        cout << tmp;
+        
+    }
+    /*
+    cin >> s;
+    reverse(s.begin(), s.begin() + s.length());
     cout << s;
-    ans++;
-    system("pause");
+    */
     return 0;
 }
