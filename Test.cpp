@@ -16,17 +16,8 @@ int main()
 {
     string s;
     fast_io();
-    
-    while (cin >> s)
-    {
-        for (int k = 1; k <= s.length();k++)
-            string tmp = s;
-        for (int i = 0; i <= s.length()-k;i++)
-            reverse(tmp.begin() + i, tmp.begin() + i + k);
 
-        cout << tmp;
-        
-    }
+    cout << "Hello World!";
     /*
     cin >> s;
     reverse(s.begin(), s.begin() + s.length());
