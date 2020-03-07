@@ -5,13 +5,13 @@
           "intelliSenseMode": "clang-x64",
           "includePath": [
               "${workspaceFolder}",
-              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++",
-              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/x86_64-w64-mingw32",
-              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/backward",
-              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include",
+              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
               "D:/LLVM/include",
               "D:/LLVM/x86_64-w64-mingw32/include",
-              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include-fixed"
+              "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"
           ],
           "defines": [
               "_DEBUG",
@@ -22,13 +22,13 @@
           "browse": {
               "path": [
                   "${workspaceFolder}",
-                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++",
-                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/x86_64-w64-mingw32",
-                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/backward",
-                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include",
+                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
                   "D:/LLVM/include",
                   "D:/LLVM/x86_64-w64-mingw32/include",
-                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/7.2.0/include-fixed"
+                  "D:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"
               ],
               "limitSymbolsToIncludedHeaders": true,
               "databaseFilename": ""
