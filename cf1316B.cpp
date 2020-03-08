@@ -18,7 +18,8 @@ struct d
 string rev(const string &s, const int k, const int n) 
 {
     string l = s.substr(0, k), r = s.substr(k);
-    if ((n - k) % 2) {
+    if ((n - k) % 2)
+    {
         reverse(l.begin(), l.end());
     }
     return r.append(l);
@@ -48,7 +49,6 @@ int main()
             str[num].s = rev(s, i, n);
             str[num++].move = i;
         }
-        
         sort(str, str + num - 1, cmp2);
         cout << str[0].s << "\n"
              << str[0].move << "\n";

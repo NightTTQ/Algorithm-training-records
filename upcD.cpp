@@ -27,12 +27,10 @@ bool work(string s)
     }
     return false;
 }
-
 int main()
 {
     string s;
     fast_io();
-
     cin >> s;
     if(work(s))
     {
@@ -40,11 +38,5 @@ int main()
     }
     else
         cout << "-1";
-
-    /*
-    cin >> s;
-    reverse(s.begin(), s.begin() + s.length());
-    cout << s;
-    */
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <cstring>
 #include <algorithm>
 #include <cmath>
-#include <iomanip>
+#include <vector>
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
@@ -17,7 +17,9 @@ int main()
     cin >> n;
     string s;
     cin >> s;
-    int le = 0, ri = 0, wa[100001], fix[100001], wan = 0, fin = 0;
+    int le = 0, ri = 0, wan = 0, fin = 0;
+    vector<int> wa;
+    vector<int> fix;
     bool flag = false;
     for (int i = 0; i < n;i++)
     {
@@ -26,7 +28,8 @@ int main()
             le++;
             if(le==ri&&flag)
             {
-                fix[fin++] = i;
+                fix.push_back(i);
+                fin++;
                 flag = false;
             }
         }
@@ -35,7 +38,8 @@ int main()
             ri++;
             if(ri>le&&!flag)
             {
-                wa[wan++] = i;
+                wa.push_back(i);
+                wan++;
                 flag = true;
             }
                
