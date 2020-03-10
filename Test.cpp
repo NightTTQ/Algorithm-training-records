@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
+#include <vector>
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
@@ -12,39 +13,37 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 int a;
-bool work(string s)
+ll qpow(ll a,ll b)
 {
-    int len=s.size(),i=0,t=0;
-    for(t=1;t<=len/2;++t)
+    ll ans=1;
+    ll base = a;
+    while(b>0)
     {
-        if (len%t) continue;
-        for (i=t;i<len&&s[i%t]==s[i];++i);
-        if (i==len) 
-        {
-            a = t;
-            return true;
-        }
+        if(b&1)
+            ans = (ans * base);
+        base = (base * base);
+        b >>= 1;
     }
-    return false;
+    return ans;
 }
-
 int main()
 {
-    string s;
+    
     fast_io();
-
-    cin >> s;
-    if(work(s))
+    vector<int> a;
+    int n;
+    cin >> n;
+    int t;
+    for (int i = 0; i < n;i++)
     {
-        cout << s.substr(0, a);
+        cin >> t;
+        a.push_back(t);
     }
-    else
-        cout << "-1";
+    int b;
+    cin >> b;
+    a.erase(a.begin() + b + 1);
+    for (int i = 0; i < a.size();i++)
+        cout << a[i] << " ";
 
-    /*
-    cin >> s;
-    reverse(s.begin(), s.begin() + s.length());
-    cout << s;
-    */
     return 0;
 }
