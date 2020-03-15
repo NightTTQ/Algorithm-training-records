@@ -6,8 +6,8 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
-#include <vector>    
-#include <cstdlib>
+#include <vector>
+
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
@@ -17,8 +17,8 @@ using namespace std;
 int main()
 {
     fast_io();
-    string s;
-    getline(cin,s);
-
+    int x, y;
+    cin >>x >> y;
+    cout << (100 * 100 / 2) - (100 - x) * y - x *y/2 -(100-y)  * (100 - x)/2;
     return 0;
 }
