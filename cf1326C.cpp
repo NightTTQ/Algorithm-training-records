@@ -18,7 +18,7 @@ using namespace std;
 int main()
 {
     fast_io();
-    ll n, k, p[2000001], b[2000001];
+    ll n, k, p[2000001];
     cin >> n >> k;
     for (ll i = 0;i< n;i++)
         cin >> p[i];
@@ -29,7 +29,6 @@ int main()
     bool flag = false;
     for(ll i=0; i < n;i++)
     {
-
         if((p[i]>=n-k+1))
         {
             if(flag)
