@@ -17,30 +17,39 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-
+int cmp(ll a, ll b)
+{
+    return a > b;
+}
 int main()
 {
     fast_io();
     int n;
     cin >> n;
-    string s;
-    getline(cin,s);
-    getline(cin,s);
-    int x;
-    if(s.length()%n)
+    ll p[100001];
+    for(int i = 0; i < n;i++)
+        cin >> p[i];
+    sort(p, p + n,cmp);
+    ll big = 0, small = 0;
+    if(n%2)
     {
-        int t = n - s.length() % n;
-        for(int i=0;i<t;i++)
-            s += " "; 
-    }   
-    x = s.length() / n;
-    string ans[n];
-    for (int i = 0;i<s.length();i++)
-    {
-        int t = i % n;
-        ans[t] = s[i] + ans[t];
+        cout << "Outgoing #: " << n / 2 + 1 << "\n";
+        cout<<"Introverted #: "<<n/2<<"\n";
+        for(int i=0;i<n/2+1;i++)
+            big+=p[i];
+        for (int i = n / 2 + 1; i < n;i++)
+            small+=p[i];
+        cout << "Diff = " << big - small << "\n";
     }
-    for(auto i:ans)
-        cout << i << "\n";
+    else
+    {
+        cout << "Outgoing #: " << n / 2 << "\n";
+        cout << "Introverted #: " << n / 2 << "\n";
+        for (int i = 0; i < n / 2; i++)
+            big += p[i];
+        for (int i = n / 2; i < n; i++)
+            small += p[i];
+        cout << "Diff = " << big - small << "\n";
+    }
     return 0;
 }
