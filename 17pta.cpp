@@ -26,30 +26,42 @@ int main()
     fast_io();
     int n;
     cin >> n;
-    ll p[100001];
+    string s;
+    string ans[5001];
+    map<string, int> guanzhu;
     for(int i = 0; i < n;i++)
-        cin >> p[i];
-    sort(p, p + n,cmp);
-    ll big = 0, small = 0;
-    if(n%2)
     {
-        cout << "Outgoing #: " << n / 2 + 1 << "\n";
-        cout<<"Introverted #: "<<n/2<<"\n";
-        for(int i=0;i<n/2+1;i++)
-            big+=p[i];
-        for (int i = n / 2 + 1; i < n;i++)
-            small+=p[i];
-        cout << "Diff = " << big - small << "\n";
+        cin >> s;
+        guanzhu[s] = 1;
     }
-    else
+    int m;
+    cin >> m;
+    int zan;
+    ll sum = 0;
+    map<string, int> dianzan;
+    string list[5001];
+    for (int i = 0; i < m;i++)
     {
-        cout << "Outgoing #: " << n / 2 << "\n";
-        cout << "Introverted #: " << n / 2 << "\n";
-        for (int i = 0; i < n / 2; i++)
-            big += p[i];
-        for (int i = n / 2; i < n; i++)
-            small += p[i];
-        cout << "Diff = " << big - small << "\n";
+        cin >> s >> zan;
+        dianzan[s] = zan;
+        sum += zan;
     }
-    return 0;
+    double avg;
+    avg = (double)sum / m;
+    int num = 0;
+    for (auto i:dianzan)
+    {
+        if(i.second>avg&&guanzhu[i.first]!=1)
+            ans[num++]=i.first;
+    }
+    if(num==0)
+    {
+        cout << "Bing Mei You";
+        return 0;
+    }
+    sort(ans, ans + num - 1);
+    for (int i = 0; i < num;i++)
+        cout << ans[i] << "\n";
+
+        return 0;
 }
