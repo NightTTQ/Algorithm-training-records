@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <set>
 #include <map>
+#include <queue>
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
@@ -17,51 +18,56 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-int cmp(ll a, ll b)
-{
-    return a > b;
-}
+
 int main()
 {
     fast_io();
     int n;
-    cin >> n;
-    string s;
-    string ans[5001];
-    map<string, int> guanzhu;
-    for(int i = 0; i < n;i++)
+    double z, r, sum = 0.0;
+    cin >> n >> z >> r;
+    r = (1 - r / 100.0);
+    int dedao[100001];
+    vector<int> td[100001];
+    for(int i=0; i<n; i++)
     {
-        cin >> s;
-        guanzhu[s] = 1;
+        int k, x;
+        cin >> k;
+        if(!k)
+        {
+            cin >> x;
+            dedao[i] = x;
+        }
+        else
+        {
+            
+            for (int j = 0; j < k;j++)
+            {
+                cin >> x;
+                td[i].push_back(x);
+            }
+        }
     }
-    int m;
-    cin >> m;
-    int zan;
-    ll sum = 0;
-    map<string, int> dianzan;
-    string list[5001];
-    for (int i = 0; i < m;i++)
+    int t;
+    int list[100001];
+    double ans = 0;
+    queue<int> q;
+    q.push(0);
+    list[0] = 0;
+    while (!q.empty())
     {
-        cin >> s >> zan;
-        dianzan[s] = zan;
-        sum += zan;
+        t=q.front();
+        q.pop();
+        for (int i = 0; i <td[t].size();i++)
+        {
+            list[td[t][i]] = list[t] + 1;
+            if(dedao[td[t][i]])
+                ans += z * pow(r, list[td[t][i]]) * dedao[td[t][i]];
+            else
+                q.push(td[t][i]);
+        }
     }
-    double avg;
-    avg = (double)sum / m;
-    int num = 0;
-    for (auto i:dianzan)
-    {
-        if(i.second>avg&&guanzhu[i.first]!=1)
-            ans[num++]=i.first;
-    }
-    if(num==0)
-    {
-        cout << "Bing Mei You";
-        return 0;
-    }
-    sort(ans, ans + num - 1);
-    for (int i = 0; i < num;i++)
-        cout << ans[i] << "\n";
-
-        return 0;
+    if(n==1&&dedao[0])
+        ans = z * dedao[0];
+    cout << (int)ans;
+    return 0;
 }
