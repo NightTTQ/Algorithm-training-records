@@ -22,28 +22,25 @@ int main()
 {
     fast_io();
     int n;
-    int k, f[11],m=0,key=0;
-    map<int, int> zan;
     cin >> n;
-    for (int i = 0; i < n;i++)
+    string s;
+    getline(cin,s);
+    getline(cin,s);
+    int x;
+    if(s.length()%n)
     {
-        cin >> k;
-        for (int j = 0; j < k;j++)
-        {
-            cin >> f[j];
-            zan[f[j]]++;
-            if(zan[f[j]]>m)
-            {
-                m=zan[f[j]];
-                key=f[j];
-            }
-            else if(zan[f[j]]==m)
-            {
-                key=max(key,f[j]);
-            }
-        }
-        
+        int t = n - s.length() % n;
+        for(int i=0;i<t;i++)
+            s += " "; 
+    }   
+    x = s.length() / n;
+    string ans[n];
+    for (int i = 0;i<s.length();i++)
+    {
+        int t = i % n;
+        ans[t] = s[i] + ans[t];
     }
-    cout << key << " " << zan[key];
-        return 0;
+    for(auto i:ans)
+        cout << i << "\n";
+    return 0;
 }

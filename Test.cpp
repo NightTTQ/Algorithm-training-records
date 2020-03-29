@@ -17,8 +17,11 @@ using namespace std;
 int main()
 {
     fast_io();
+    int n;
+    cin >> n;
     string s;
+    //getchar();
+    getline();
     getline(cin,s);
-
     return 0;
 }
