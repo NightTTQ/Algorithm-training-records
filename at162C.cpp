@@ -14,9 +14,9 @@
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
+#define mod 998244353
 typedef long long ll;
 typedef long double ld;
-ll mod = 10e9 + 7;
 using namespace std;
 
 template<typename _EuclideanRingElement>
@@ -35,23 +35,18 @@ template<typename _EuclideanRingElement>
 int main()
 {
     fast_io();
-	freopen("out.txt", "w", stdout);
     int k;
     int t;
     ll ans = 0;
-	for (k = 2; k <= 10e5;k++)
-	{
-		for (int i = 1; i <= k; i++)
-			for (int j = 1; j <= k; j++)
-				for (int l = 1; l <= k; l++)
-				{
-					t = _gcd(i, j);
-					ans += _gcd(t, l);
-					ans = ans%mod;
-				}
-    	cout << ans<<",";
-	}
-		
+    cin >> k;
+    for (int i = 1; i <= k;i++)
+        for (int j = 1;j <= k;j++)
+            for(int  l= 1;l <= k;l++)
+            {
+                t = _gcd(i, j);
+                ans += _gcd(t, l);
+            }
+    cout << ans;
 
     return 0;
 }
