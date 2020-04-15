@@ -99,6 +99,7 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "stdlib.h": "c"
     } // 效果稍好，但太卡，故关掉
 }

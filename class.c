@@ -3,26 +3,25 @@
 #include <stdlib.h>
 int main()
 {
-    int a, b, c, t;
-    scanf("%d%d%d", &a, &b, &c);
-    if(b>a)
+    float x, y, ans;
+    char c;
+    printf("Please input two numbers and a operator symbol with space separated:");
+    scanf("%f%c%f", &x, &c, &y);
+    switch (c)
     {
-        t = a;
-        a = b;
-        b = t;
+        case '+':
+            ans = x + y;
+            break;
+        case '-':
+            ans = x - y;
+            break;
+        case '*':
+            ans = x * y;
+            break;
+        case '/':
+            ans = x / y;
+            break;
     }
-    if(c>a)
-    {
-        t = a;
-        a = c;
-        c = t;
-    }
-    if(c>b)
-    {
-        t = b;
-        b = c;
-        c = t;
-    }
-    printf("%d %d %d", a, b, c);
-    return 0;
+    printf("%f%c%f=%f", x, c, y, ans);
+
 }
