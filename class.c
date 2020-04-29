@@ -1,18 +1,19 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-float sum(int n, int m)
+float fp(float n, float x)
 {
-    float s = 0;
-    for (int i = n; i <= m; i++)
-        s += (float)1 / i;
-    return s;
+    if (n == 0)
+        return 1;
+    else if (n == 1)
+        return n;
+    else
+        return ((2 * n - 1) * x * fp(n - 1, x) - (n - 1) * fp(n - 2, x)) / n;
 }
-
 int main()
 {
-    int n, m, ans = 0;
-    scanf("%d%d", &n, &m);
-    printf("%f", sum(n, m));
+    float x, y;
+    scanf("%f%f", &x, &y);
+    printf("%f", fp(x, y));
     return 0;
 }
