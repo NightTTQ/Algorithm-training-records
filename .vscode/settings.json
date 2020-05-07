@@ -101,6 +101,7 @@
         "valarray": "cpp",
         "stdlib.h": "c",
         "xiosbase": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "xstring": "cpp"
     } // 效果稍好，但太卡，故关掉
 }
