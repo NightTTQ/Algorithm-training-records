@@ -2,56 +2,79 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
-#include <string>
+#include <functional>
 #include <iomanip>
 #include <iostream>
-#include <vector>    
-#include <cstdlib>
-#include <set>
 #include <map>
 #include <queue>
+#include <set>
+#include <string>
+#include <vector>
 #define fast_io()                \
     ios::sync_with_stdio(false); \
     std::cin.tie(0);
+#define mod 998244353
 typedef long long ll;
 typedef long double ld;
-ll mod = 10e9 + 7;
 using namespace std;
-
-template<typename _EuclideanRingElement>
-    _EuclideanRingElement
-    _gcd(_EuclideanRingElement __m, _EuclideanRingElement __n)
-    {
-      while (__n != 0)
-	{
-	  _EuclideanRingElement __t = __m % __n;
-	  __m = __n;
-	  __n = __t;
-	}
-      return __m;
-    }
 
 int main()
 {
-    fast_io();
-	freopen("out.txt", "w", stdout);
-    int k;
-    int t;
-    ll ans = 0;
-	for (k = 2; k <= 10e5;k++)
-	{
-		for (int i = 1; i <= k; i++)
-			for (int j = 1; j <= k; j++)
-				for (int l = 1; l <= k; l++)
-				{
-					t = _gcd(i, j);
-					ans += _gcd(t, l);
-					ans = ans%mod;
-				}
-    	cout << ans<<",";
-	}
-		
+    string s;
+    cin >> s;
+    vector<string> strs;
+    string tmp;
+    for (auto i : s)
+    {
+        if (i != '+')
+        {
+            tmp.push_back(i);
+        }
+        else
+        {
+            strs.push_back(tmp);
+            tmp.clear();
+        }
+    }
+    strs.push_back(tmp);
+    double sum = 0;
+    for (auto i : strs)
+    {
+        string before, after("0");
+        bool d = false;
+        for (auto j : i)
+        {
+            if (j == 'd')
+            {
+                d = true;
+                continue;
+            }
+
+            if (!d)
+            {
+                before.push_back(j);
+            }
+            else
+            {
+                after.push_back(j);
+            }
+        }
+        double b = atoi(before.c_str()), a = atoi(after.c_str());
+        if (a != 0)
+        {
+            sum += b * (a + 1) / 2;
+        }
+        else
+        {
+            sum += b;
+        }
+    }
+    ll ans = sum;
+    printf("%ld", ans);
+    if (sum != ans)
+        cout << ".5";
 
     return 0;
 }

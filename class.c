@@ -1,19 +1,15 @@
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
-float fp(float n, float x)
+int d = 1;
+int fun(int p)
 {
-    if (n == 0)
-        return 1;
-    else if (n == 1)
-        return n;
-    else
-        return ((2 * n - 1) * x * fp(n - 1, x) - (n - 1) * fp(n - 2, x)) / n;
+    static int d = 5;
+    d += 5;
+    printf("%d\n", d);
+    return d;
 }
 int main()
 {
-    float x, y;
-    scanf("%f%f", &x, &y);
-    printf("%f", fp(x, y));
+    int a = 3;
+    printf("%d\n", fun(a + fun(d)));
     return 0;
 }

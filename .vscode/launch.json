@@ -12,6 +12,7 @@
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "neverOpen",
         },
         {
             "name": "GDB Debug", // 配置名称，将会在启动配置的下拉菜单中显示

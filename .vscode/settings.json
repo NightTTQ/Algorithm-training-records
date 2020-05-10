@@ -102,6 +102,7 @@
         "stdlib.h": "c",
         "xiosbase": "cpp",
         "xtree": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "queue": "cpp"
     } // 效果稍好，但太卡，故关掉
 }
