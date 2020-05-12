@@ -1,15 +1,23 @@
 #include <stdio.h>
-int d = 1;
-int fun(int p)
-{
-    static int d = 5;
-    d += 5;
-    printf("%d\n", d);
-    return d;
-}
 int main()
 {
-    int a = 3;
-    printf("%d\n", fun(a + fun(d)));
+    char a[50], b[50], c[100];
+    scanf("%s%s", &a, &b);
+    for (int i = 0, aa = 0, bb = 0; i < 100; i++)
+    {
+        if (a[aa] != '\0')
+        {
+            c[i] = a[aa];
+            aa++;
+        }
+        else if (b[bb] != '\0')
+        {
+            c[i] = b[bb];
+            bb++;
+        }
+        else
+            break;
+    }
+    printf("%s\n", c);
     return 0;
 }
