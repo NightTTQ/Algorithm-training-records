@@ -1,23 +1,18 @@
 #include <stdio.h>
 int main()
 {
-    char a[50], b[50], c[100];
-    scanf("%s%s", &a, &b);
-    for (int i = 0, aa = 0, bb = 0; i < 100; i++)
-    {
-        if (a[aa] != '\0')
+    int a[7] = {1, 2, 4, 5, 6, 7};
+    int n;
+    scanf("%d", &n);
+    for (int i = 0; i < 6; i++)
+        if (a[i] > n)
         {
-            c[i] = a[aa];
-            aa++;
-        }
-        else if (b[bb] != '\0')
-        {
-            c[i] = b[bb];
-            bb++;
-        }
-        else
+            for (int j = 6; j > i; j--)
+                a[j] = a[j - 1];
+            a[i] = n;
             break;
-    }
-    printf("%s\n", c);
+        }
+    for (int i = 0; i < 7; i++)
+        printf("%d ", a[i]);
     return 0;
 }
