@@ -26,12 +26,12 @@ int main()
     cin >> T;
     while (T--)
     {
-        ll a, k, aa;
+        ll a, k;
         cin >> a >> k;
         k--;
         while (k--)
         {
-            int maxd = -1, mind = 10, t = 0;
+            int maxd = -1, mind = 10;
             for (ll i = a; i; i /= 10)
             {
                 maxd = max(maxd, int(i % 10));
