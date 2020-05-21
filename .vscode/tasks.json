@@ -30,6 +30,8 @@
             "args": [
                 "-std=gnu++17",
                 "-Wall",
+                "-Wextra",
+                "-pedantic",
                 "-g",
                 "${file}",
                 "-o",
