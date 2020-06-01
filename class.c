@@ -1,14 +1,11 @@
 #include <stdio.h>
 
-int fun(int a[], int n) {}
-
 int main()
 {
-    int a[6], i;
-    for (int i = 0; i < 6; i++)
-        scanf("%d", &a[i]);
-    fun(a, 6);
-    for (int i = 0; i < 6; i++)
-        printf("%d ", a[i]);
+    int n = 2, k = 0;
+    while (k++ && n++ > 2)
+        ;
+    printf("% d % d\n", k, n);
+
     return 0;
 }

@@ -22,8 +22,23 @@ using namespace std;
 
 int main()
 {
-    float a;
-    while (cin >> a)
-        cout << a << '\n';
+    fast_io();
+    ll n, ans = 1, a;
+    bool b0 = false, b1 = false;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a;
+        if (a == 0)
+            b0 = true;
+        if (ans != 0 && (ll)1e18 / ans < a)
+            ans = 0;
+        else
+            ans *= a;
+    }
+    if (b0 || ans)
+        cout << ans;
+    else
+        cout << "-1";
     return 0;
 }

@@ -22,8 +22,9 @@ using namespace std;
 
 int main()
 {
-    float a;
-    while (cin >> a)
-        cout << a << '\n';
+    fast_io();
+    int a, b;
+    cin >> a >> b;
+    cout << a * b;
     return 0;
 }
