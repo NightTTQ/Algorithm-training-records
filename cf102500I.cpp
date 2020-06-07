@@ -28,17 +28,17 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> card[i];
     int l = 0, r = n - 1;
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 1; i < n; i++)
     {
-        if (card[i + 1] < card[i])
+        if (card[i] < card[i - 1])
         {
-            l = i;
-            while (l > 0 && card[l] == card[l - 1])
+            l = i - 1;
+            while (l && card[l] == card[l - 1])
                 l--;
             break;
         }
     }
-    for (int i = n - 1; i > 0; i--)
+    for (int i = n - 1; i >= 0; i--)
     {
         if (card[i] < card[i - 1])
         {
@@ -47,15 +47,6 @@ int main()
                 r++;
             break;
         }
-    }
-    if (l == 0 && r == n - 1)
-    {
-        for (int i = 0; i < n - 2; i++)
-            if (card[i + 1] < card[i])
-            {
-                cout << "impossible\n";
-                return 0;
-            }
     }
     if (l <= r)
         reverse(card + l, card + r + 1);
