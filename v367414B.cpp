@@ -19,57 +19,52 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-const int N = 100010;
-int stack[N], a[N], l[N], r[N];
-long long sum[N];  // sum[i]是前缀和，即前i个数的总和
+ll sum[100001], a[100001], stack[100001], l[100001], r[100001];
 
 int main()
 {
+    fast_io();
     int n;
-    scanf("%d", &n);
+    cin >> n;
     sum[0] = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        scanf("%d", &a[i]);
-        sum[i] = sum[i - 1] + a[i];
-    }
-    //求出每个数的左边界
-    int top = 0;
     stack[0] = 0;
     a[0] = -1;
     for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+        sum[i] = sum[i - 1] + a[i];
+    }
 
+    int top = 0;
+    for (int i = 1; i <= n; i++)
     {
         while (a[stack[top]] >= a[i])
             top--;
-        l[i] = stack[top] + 1;
-        stack[++top] = i;
+        l[i] = stack[top++] + 1;
+        stack[top] = i;
     }
-    //求出每个数的右边界
+
     top = 0;
     stack[0] = n + 1;
     a[n + 1] = -1;
     for (int i = n; i >= 1; i--)
-
     {
         while (a[stack[top]] >= a[i])
             top--;
-        r[i] = stack[top] - 1;
-        stack[++top] = i;
+        r[i] = stack[top++] - 1;
+        stack[top] = i;
     }
-    long long ans = -1;
+    ll ans = -1;
     int id = 0;
     for (int i = 1; i <= n; i++)
-
     {
-        long long temp = (sum[r[i]] - sum[l[i] - 1]) * a[i];
-        if (temp > ans)
-
+        ll t = (sum[r[i]] - sum[l[i] - 1]) * a[i];
+        if (t > ans)
         {
-            ans = temp;
+            ans = t;
             id = i;
         }
     }
-    printf("%lld\n%d %d\n", ans, l[id], r[id]);
+    cout << ans << "\n" << l[id] << " " << r[id];
     return 0;
 }
