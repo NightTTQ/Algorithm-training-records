@@ -10,6 +10,7 @@
 #include <map>
 #include <queue>
 #include <set>
+#include <stack>
 #include <string>
 #include <vector>
 #define fast_io()                \
@@ -19,16 +20,25 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-const int N = 100010;
-int stack[N], a[N], l[N], r[N];
-long long sum[N];  // sum[i]是前缀和，即前i个数的总和
 
 int main()
 {
-    int a, b;
-    cin >> a >> b;
-    int c;
-    c = a ^ b;
-    cout << c;
+    fast_io();
+    ll n, t, o;
+    stack<char> ans;
+    cin >> n;
+    while (n)
+    {
+        n -= 1;
+        o = n % 26;
+        n /= 26;
+        ans.push('a' + o);
+    }
+    while (!ans.empty())
+    {
+        cout << ans.top();
+        ans.pop();
+    }
+
     return 0;
 }

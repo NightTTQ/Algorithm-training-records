@@ -19,16 +19,19 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-const int N = 100010;
-int stack[N], a[N], l[N], r[N];
-long long sum[N];  // sum[i]是前缀和，即前i个数的总和
 
 int main()
 {
-    int a, b;
-    cin >> a >> b;
-    int c;
-    c = a ^ b;
-    cout << c;
+    fast_io();
+    int k, n;
+    int p[1001];
+    cin >> n >> k;
+    for (int i = 0; i < n; i++)
+        cin >> p[i];
+    sort(p, p + n);
+    ll ans = 0;
+    for (int i = 0; i < k; i++)
+        ans += p[i];
+    cout << ans;
     return 0;
 }
