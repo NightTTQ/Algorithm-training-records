@@ -1,36 +1,41 @@
 #include <stdio.h>
-#include <string.h>
-
-int pri[100000], vis[100000];
-
-int primeFactor(int n)
+#include <stdlib.h>
+#include <time.h>
+int main()
 {
-    int cnt = 0;
-    for (int i = 2; i <= n; i++)
+    int a, b, c, x, cnt = 0;
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < 5; i++)
     {
-        if (!vis[i])
+        a = rand() % 10 + 1;
+        b = rand() % 10 + 1;
+        c = rand() % 3;
+        switch (c)
         {
-            pri[cnt++] = i;
-            vis[i] = 1;
-        }
-        for (int j = 0; j < cnt; j++)
-        {
-            if (pri[j] * i > n)
+            case 0:
+                printf("%d+%d=", a, b);
+                scanf("%d", &x);
+                if (x == a + b)
+                    cnt++;
                 break;
-            vis[i * pri[j]] = 1;
-            if (!(i % pri[j]))
+            case 1:
+                printf("%d-%d=", a, b);
+                scanf("%d", &x);
+                if (x == a - b)
+                    cnt++;
+                break;
+            case 2:
+                printf("%d*%d=", a, b);
+                scanf("%d", &x);
+                if (x == a * b)
+                    cnt++;
                 break;
         }
     }
-    return cnt;
-}
+    if (cnt >= 4)
+        printf("闯关成功");
+    else
+        printf("闯关不成功");
 
-int main()
-{
-    int n;
-    memset(vis, 0, sizeof(vis));
-    memset(pri, 0, sizeof(pri));
-    scanf("%d", &n);
-    printf("%d\n", primeFactor(n));
     return 0;
 }
