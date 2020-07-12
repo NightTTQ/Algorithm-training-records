@@ -25,10 +25,36 @@ long long sum[N];  // sum[i]是前缀和，即前i个数的总和
 
 int main()
 {
-    int a, b;
-    cin >> a >> b;
-    int c;
-    c = a ^ b;
-    cout << c;
+    string s, t, temp;
+    map<char, int> a1;
+    int cnt1 = 0, ans = 0;
+    cin >> s >> t;
+    for (auto i : s)
+    {
+        if (a1[i] == 0)
+        {
+            a1[i] = 1;
+            cnt1++;
+        }
+    }
+
+    for (int i = 0; i < t.length() - s.length() + 1; i++)
+    {
+        temp = t.substr(i, s.length());
+        map<char, int> a2;
+        int cnt2 = 0;
+        for (auto j : temp)
+        {
+            if (a2[j] == 0)
+            {
+                a2[j] = 1;
+                cnt2++;
+            }
+        }
+        if (cnt1 == cnt2)
+            ans++;
+        // cout << temp << endl;
+    }
+    cout << ans;
     return 0;
 }
