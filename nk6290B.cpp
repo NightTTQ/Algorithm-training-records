@@ -25,8 +25,16 @@ int main()
 {
     fast_io();
     int n;
-    bool flag = false;
     cin >> n;
-
+    ll a[n], ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        if (a[i] < 0)
+            ans += a[i] * (i + 1);
+        else
+            ans += a[i];
+    }
+    cout << ans;
     return 0;
 }
