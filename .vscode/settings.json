@@ -103,6 +103,20 @@
         "xiosbase": "cpp",
         "xtree": "cpp",
         "xstring": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "concepts": "cpp",
+        "ios": "cpp",
+        "stack": "cpp",
+        "xfacet": "cpp",
+        "xhash": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "xmemory": "cpp",
+        "xstddef": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp"
     } // 效果稍好，但太卡，故关掉
 }
