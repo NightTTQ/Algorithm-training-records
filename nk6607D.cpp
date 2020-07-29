@@ -41,7 +41,7 @@ int main()
             else if (c == "E")
                 ex = j, ey = i;
             else
-                dt[j][i] = atoi(c);
+                dt[j][i] = c.atoi();
         }
 
     return 0;
