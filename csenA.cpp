@@ -10,6 +10,7 @@
 #include <map>
 #include <queue>
 #include <set>
+#include <stack>
 #include <string>
 #include <vector>
 #define fast_io()                \
@@ -36,19 +37,26 @@ ll qpow(ll a, ll b)
 
 int main()
 {
+    fast_io();
+    ll b, bb;
     string aa;
-    ll b;
     cin >> aa >> b;
-    ll t = qpow(10, aa.length()), num = 0;
-    for (ll i = 0; i < aa.length(); i++)
+    int cnt = aa.length();
+    ll t = qpow(10, cnt);
+    aa = "100" + aa;
+    ll a = 0;
+    for (auto i : aa)
     {
-        num *= 10;
-        num += aa[i] - '0';
+        a *= 10;
+        a += i;
     }
-    ll ans = 0;
-    for (ll i = 0, tt = t * 100; i < 900; i++, tt += t)
-        if ((tt + num) % b == 0)
+    int ans = 0;
+    for (ll i = 1; i < 900; i++)
+    {
+        if (a % b == 0)
             ans++;
+        a += t;
+    }
     cout << ans;
     return 0;
 }
