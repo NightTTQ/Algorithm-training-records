@@ -24,29 +24,36 @@ using namespace std;
 int main()
 {
     fast_io();
-    int n, m;
+    int i, n, m, j, k, x, y;
+    bool flag;
     cin >> n >> m;
     int a[n], b[m];
-    int aa;
-    for (int i = 0; i < n; i++)
+    for (j = 0; j < n; j++)
     {
-        cin >> a[i];
-        if (i == 0)
-            aa = a[0];
-        else
-            aa = aa | a[i];
+        cin >> a[j];
     }
-    int ans;
-    int bb;
-    for (int i = 0; i < m; i++)
+    for (j = 0; j < m; j++)
     {
-        cin >> b[i];
-        if (i == 0)
-            bb = b[0];
-        else
-            bb = bb & b[i];
+        cin >> b[j];
     }
-    ans = aa & bb;
-    cout << ans;
+    for (i = 0; i < 512; i++)
+    {
+        y = 0;
+        for (j = 0; j < n; j++)
+        {
+            flag = 0;
+            for (k = 0; k < m; k++)
+            {
+                x = (a[j] & b[k]);
+                if (i == (x | i))
+                    flag = 1;
+            }
+            if (flag == 1)
+                y = y + 1;
+        }
+        if (y == n)
+            break;
+    }
+    cout << i;
     return 0;
 }
