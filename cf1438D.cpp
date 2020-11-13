@@ -23,8 +23,7 @@ using namespace std;
 
 int main()
 {
-    // fast_io();
-    /*
+    fast_io();
     int n;
     cin >> n;
     vector<ll> a(n);
@@ -39,19 +38,19 @@ int main()
             t = t ^ a[i];
     }
     cout << t;
-*/
-    int t = 0, in;
-    bool flag = false;
-    while (cin >> in)
-    {
-        if (!flag)
-        {
-            flag = true;
-            t = in;
-        }
-        else
-            t = t ^ in;
-        cout << t << "\n";
-    }
+
+    // int t = 0, in;
+    // bool flag = false;
+    // while (cin >> in)
+    // {
+    //     if (!flag)
+    //     {
+    //         flag = true;
+    //         t = in;
+    //     }
+    //     else
+    //         t = t ^ in;
+    //     cout << t << "\n";
+    // }
     return 0;
 }
