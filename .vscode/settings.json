@@ -117,6 +117,7 @@
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "compare": "cpp"
     } // 效果稍好，但太卡，故关掉
 }
