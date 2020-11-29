@@ -29,52 +29,50 @@ int main()
     while (T--)
     {
         int ans = INT_MAX;
-        int now;
-        map<int, int> num;
+
         ll n, k;
         cin >> n >> k;
         int a[n];
         for (int i = 0; i < n; i++)
-        {
             cin >> a[i];
-            num[a[i]]++;
-        }
-        int last = 0;
-        map<int, int>::reverse_iterator it;
-        for (auto it = num.rbegin(); it != num.rend(); it++)
+        for (int i = 1; i <= 100; i++)
         {
+            bool st = false;
+            int now = 0;
             int opt = 0;
-            now = 0;
-            int t = 0;
-            for (int j = 0; j <= n - k; j++)
+            for (int j = 0; j < n; j++)
             {
-                t = 0;
-                for (int l = 0; l < k; l++)
+                if (st)
                 {
-                    if (a[j + l] != it->first)
-                        t++;
+                    now++;
+                    if (now == k)
+                    {
+                        now = 0;
+                        opt++;
+                        st = false;
+                    }
                 }
-                if (t == k)
+                else if (a[j] == i)
                 {
-                    opt++;
-                    now += k;
-                    j += k - 1;
-                    last = 0;
-                }
-                else if (t < last)
-                {
-                    opt++;
-                    now += last;
-                    j += k - 2;
-                    last = 0;
+                    if (now)
+                        opt++;
+                    now = 0;
                 }
                 else
-                    last = t;
+                {
+                    st = true;
+                    now++;
+                    if (now == k)
+                    {
+                        now = 0;
+                        opt++;
+                        st = false;
+                    }
+                }
             }
-            if (last)
+            if (now)
                 opt++;
-            if (opt < ans)
-                ans = opt;
+            ans = min(ans, opt);
         }
         cout << ans << "\n";
     }
