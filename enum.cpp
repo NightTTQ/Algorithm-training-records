@@ -23,21 +23,25 @@ using namespace std;
 
 enum num
 {
-    a1 = 2,
-    a2,
-    a3
+    a,
+    b,
+    c = 5,
+    d,
+    e = 10
 };
 
 int main()
 {
     fast_io();
-    num a4 = a1;
-    cout << a1 << " " << a2 << " " << a3 << "\n";
-    cout << a4;
-    {
-        const static int sta = 111;
-        cout << sta;
-    }
-
+    // num a4 = a1;
+    // cout << a1 << " " << a2 << " " << a3 << "\n";
+    // cout << a4;
+    // {
+    //     const static int sta = 111;
+    //     cout << sta;
+    // }
+    // cout << a << " " << b << " " << c << " " << d << " " << e;
+    int a[5] = {1, 3, 5, 7, 9}, *p = a;
+    cout << *(p + 2);
     return 0;
 }
