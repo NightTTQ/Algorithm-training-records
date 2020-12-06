@@ -36,19 +36,8 @@ ll qpow(ll a, ll b)
 
 int main()
 {
-    string aa;
-    ll b;
-    cin >> aa >> b;
-    ll t = qpow(10, aa.length()), num = 0;
-    for (ll i = 0; i < aa.length(); i++)
-    {
-        num *= 10;
-        num += aa[i] - '0';
-    }
-    ll ans = 0;
-    for (ll i = 0, tt = t * 100; i < 900; i++, tt += t)
-        if ((tt + num) % b == 0)
-            ans++;
-    cout << ans;
+    int n = 50, i = 666;
+    n = (i = 2, ++i);
+    cout << n;
     return 0;
 }
