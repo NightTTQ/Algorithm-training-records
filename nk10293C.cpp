@@ -79,8 +79,6 @@ bool Spfa(const int S)
 int main()
 {
     fast_io();
-    int S;
-    S = 0;
     cin >> n >> m;
     for (int i = 1; i <= m; ++i)
     {
@@ -89,15 +87,11 @@ int main()
         Add_Edge(x, y, _);
     }
     int ans = 0, ans2 = 0;
+    Spfa(0);
 
-    if (!Spfa(S))
-        printf("FAIL!\n");
-    else
-    {
-        for (int i = 1; i <= n; i++)
-            if (Dis[i] > ans)
-                ans = Dis[i], ans2 = i;
-    }
+    for (int i = 1; i <= n; i++)
+        if (Dis[i] > ans)
+            ans = Dis[i], ans2 = i;
     cout << ans << " " << ans2;
 
     return 0;
