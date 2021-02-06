@@ -37,73 +37,58 @@ int main()
             cin >> b[i];
         for (int i = 0; i < m; i++)
             cin >> c[i];
-        vector<int> ans(m);
-        vector<pair<int, int>> diff;
+        map<int, vector<int>> all, need;
         for (int i = 0; i < n; i++)
         {
-            diff.push_back(make_pair(a[i], b[i]));
+            if (a[i] != b[i])
+                need[b[i]].push_back(i);
+            all[b[i]].push_back(i);
         }
-        bool flag = false;
-
-        //给最后一个人找位置
-        for (int j = 0; j < n; j++)
+        vector<int> ans;
+        //对所有画家找对应需要改变的块
+        for (int i = m - 1; i >= 0; i--)
         {
-            if (c[m - 1] == b[j])
+            auto t = need.find(c[i]);
+            if (t == need.end() || t->second.empty())
+                ans.push_back(-1);
+            else
             {
-                ans[m - 1] = j + 1;
-                diff[j].first = diff[j].second;
-                flag = true;
+                ans.push_back(need[c[i]].back());
+                need[c[i]].pop_back();
+            }
+        }
+        //检查每一个需要改变的块是否都已经有对应的画家
+        bool done = true;
+        for (auto i : need)
+            if (!i.second.empty())
+            {
+                done = false;
                 break;
             }
-        }
-        if (flag)
+        //如果最后一个画家没有对应的应改变块，则分配一个对应的不需改变块
+        if (ans[0] == -1)
         {
-            //给其他需要变色的方块找到画家
-            for (int i = 0; i < n; i++)
-            {
-                if (diff[i].first != diff[i].second)
-                {
-                    bool done = false;
-                    for (int j = 0; j < m - 1; j++)
-                    {
-                        if (c[j] && c[j] == diff[i].second)
-                        {
-                            c[j] = 0;
-                            ans[j] = i + 1;
-                            done = true;
-                            break;
-                        }
-                    }
-                    if (!done)
-                    {
-                        flag = false;
-                        break;
-                    }
-                }
-            }
+            auto t = all.find(c[m - 1]);
+            if (t == all.end())
+                done = false;
+            else
+                ans[0] = t->second.front();
         }
-        if (flag)
+        if (done)
         {
-            //剩下的画家全部画在最后一个画家画的地方
-            for (int j = 0; j < m - 1; j++)
-            {
-                if (c[j])
-                {
-                    c[j] = 0;
-                    ans[j] = ans[m - 1];
-                }
-            }
-        }
-        if (flag)
-        {
+            //对于没有分配块的画家，让他们画在后一个画家画的地方，将自己的操作覆盖
+            for (int i = 1; i < m; i++)
+                if (ans[i] == -1)
+                    ans[i] = ans[i - 1];
             cout << "YES\n";
-            for (int i = 0; i < m; i++)
-                cout << ans[i] << " ";
-            cout << "\n";
+            //倒序输出
+            for (int i = m - 1; i >= 0; i--)
+                cout << ans[i] + 1 << ' ';
+            cout << '\n';
         }
-
         else
             cout << "NO\n";
     }
+
     return 0;
 }
