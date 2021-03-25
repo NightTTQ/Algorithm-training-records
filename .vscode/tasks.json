@@ -13,7 +13,8 @@
                 "-static-libgcc", // 静态链接
                 "-fcolor-diagnostics",
                 "--target=x86_64-w64-mingw", // 默认target为msvc，不加这一条就会找不到头文件
-                "-std=c++20" // C语言最新标准为c20，或根据自己的需要进行修改
+                "-std=c++20", // C语言最新标准为c20，或根据自己的需要进行修改
+                "-fstandalone-debug"
             ], // 编译命令参数
             "group": "build",
             "presentation": {
@@ -35,7 +36,8 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-fstandalone-debug"
             ],
             "group": {
                 "kind": "build",
