@@ -26,22 +26,22 @@ int main()
 {
     fast_io();
     int T;
-    cin>>T;
-    while(T--)
+    cin >> T;
+    while (T--)
     {
-        ll n,m;
-        cin>>n>>m;
-        ll per=(m-1)/n+1;
-        ll ans=1e9+7;
-        while(true)
+        ll n, m;
+        cin >> n >> m;
+        ll per = (m - 1) / n + 1;
+        ll ans = 1e9 + 7;
+        while (true)
         {
-            ll nn=(m-1)/per+1;
-            ans=min(ans,n-nn+(nn*per)-m);
-            if(nn==1)
+            ll nn = (m - 1) / per + 1;
+            ans = min(ans, n - nn + (nn * per) - m);
+            if (nn == 1)
                 break;
-            per=(m-1)/(nn-1)+1;
+            per = (m - 1) / (nn - 1) + 1;
         }
-        cout<<ans<<"\n";
+        cout << ans << "\n";
     }
     return 0;
 }

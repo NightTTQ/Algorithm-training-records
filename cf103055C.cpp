@@ -24,33 +24,36 @@ using namespace std;
 
 struct point
 {
-    int x,y,z;
-}points[8];
+    int x, y, z;
+} points[8];
 
 bool check()
 {
     double dis[36];
-    for(int i=0;i<8;i++)
+    for (int i = 0; i < 8; i++)
     {
-        int cnt=1;
-        for(int j=0;j<8;j++)
+        int cnt = 1;
+        for (int j = 0; j < 8; j++)
         {
-            if(i==j)
+            if (i == j)
                 continue;
-            dis[cnt]=0;
-            dis[cnt]+=(points[i].x-points[j].x)*(points[i].x-points[j].x);
-            dis[cnt]+=(points[i].y-points[j].y)*(points[i].y-points[j].y);
-            dis[cnt]+=(points[i].z-points[j].z)*(points[i].z-points[j].z);
+            dis[cnt] = 0;
+            dis[cnt] +=
+                (points[i].x - points[j].x) * (points[i].x - points[j].x);
+            dis[cnt] +=
+                (points[i].y - points[j].y) * (points[i].y - points[j].y);
+            dis[cnt] +=
+                (points[i].z - points[j].z) * (points[i].z - points[j].z);
             cnt++;
         }
-        sort(dis,dis+cnt);
-        if(dis[1]==0)
+        sort(dis, dis + cnt);
+        if (dis[1] == 0)
             return false;
-        if(dis[1]!=dis[2]||dis[1]!=dis[3]||dis[2]!=dis[3])
+        if (dis[1] != dis[2] || dis[1] != dis[3] || dis[2] != dis[3])
             return false;
-        if(dis[4]!=dis[5]||dis[4]!=dis[6]||dis[5]!=dis[6])
+        if (dis[4] != dis[5] || dis[4] != dis[6] || dis[5] != dis[6])
             return false;
-        if(dis[1]*2!=dis[4]||dis[1]*3!=dis[7])
+        if (dis[1] * 2 != dis[4] || dis[1] * 3 != dis[7])
             return false;
     }
     return true;
@@ -60,15 +63,15 @@ int main()
 {
     fast_io();
     int T;
-    cin>>T;
-    while(T--)
+    cin >> T;
+    while (T--)
     {
-        for(int i=0;i<8;i++)
-            cin>>points[i].x>>points[i].y>>points[i].z;
-        if(check())
-            cout<<"YES\n";
+        for (int i = 0; i < 8; i++)
+            cin >> points[i].x >> points[i].y >> points[i].z;
+        if (check())
+            cout << "YES\n";
         else
-            cout<<"NO\n";
+            cout << "NO\n";
     }
     return 0;
 }
