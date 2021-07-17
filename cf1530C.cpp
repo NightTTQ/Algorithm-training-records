@@ -81,9 +81,8 @@ int main()
         }
         if (diff <= 100 * (4 - n % 4))
             ans = ceil(diff / 100.0);
-        else
-        {
-        }
+        // else
+
         cout << ans << "\n";
     }
     return 0;
