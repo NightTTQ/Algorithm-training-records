@@ -21,26 +21,6 @@ typedef long long ll;
 typedef long double ld;
 using namespace std;
 
-vector<int> a, b;
-int n;
-
-bool check()
-{
-    ll A = 0, B = 0;
-    int cnt = n - n / 4;
-    sort(a.rbegin(), a.rend());
-    sort(b.rbegin(), b.rend());
-    for (int i = 0; i < cnt; i++)
-    {
-        A += a[i];
-        B += b[i];
-    }
-    if (A >= B)
-        return true;
-    else
-        return false;
-}
-
 int main()
 {
     fast_io();
@@ -48,9 +28,10 @@ int main()
     cin >> T;
     while (T--)
     {
-        a.clear();
-        b.clear();
+        vector<int> a, b;
+        int n;
         cin >> n;
+        int nn = n;
         for (int i = 0; i < n; i++)
         {
             int t;
@@ -66,6 +47,8 @@ int main()
         int ans = 0;
         ll A = 0, B = 0;
         int cnt = n - n / 4;
+        int now = cnt;
+        int ia = cnt - 1, ib = cnt;
         sort(a.rbegin(), a.rend());
         sort(b.rbegin(), b.rend());
         for (int i = 0; i < cnt; i++)
@@ -73,16 +56,26 @@ int main()
             A += a[i];
             B += b[i];
         }
-        ll diff = B - A;
-        if (diff <= 0)
+        while (A < B)
         {
-            cout << "0\n";
-            continue;
+            n++;
+            now = n - n / 4;
+            if (now == cnt)
+            {
+                if (ia >= 0)
+                    A = A - a[ia--] + 100;
+                else
+                    A += 0;
+            }
+            else
+            {
+                A += 100;
+                if (ib < nn)
+                    B += b[ib++];
+            }
+            ans++;
+            cnt = now;
         }
-        if (diff <= 100 * (4 - n % 4))
-            ans = ceil(diff / 100.0);
-        // else
-
         cout << ans << "\n";
     }
     return 0;
