@@ -22,27 +22,11 @@
 typedef long long ll;
 typedef long double ld;
 using namespace std;
-
-int n, m;
-int ans = 0;
-vector<pair<int, int>> range[2001];
-
-inline int dfs(int col, int u, int d, int deep)
-{
-    int width = d - u + 1;
-    if (width * (m - (col - deep)) <= ans)
-        return deep;
-    ans = max(ans, width * deep);
-    if (col >= m)
-        return deep;
-    for (auto i : range[col + 1])
-    {
-        if (i.second < u || i.first > d)
-            continue;
-        dfs(col + 1, max(u, i.first), min(d, i.second), deep + 1);
-    }
-    return deep;
-}
+const int N = 5e3;
+int all[N][N];
+bool mp[N][N];
+int h[N];
+int que[N];
 
 int main()
 {
@@ -51,38 +35,45 @@ int main()
     cin >> T;
     while (T--)
     {
+        int n, m;
         cin >> n >> m;
-        int all[n][m];
-        bool mp[n][m];
-        memset(mp, true, sizeof(mp));
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                cin >> all[i][j];
-        for (int i = 0; i < m; i++)
+
+        for (int i = 1; i <= n; i++)
         {
-            int u = 0, d = 0;
-            for (int j = 1; j < n; j++)
+            for (int j = 1; j <= m; j++)
             {
-                if (all[j - 1][i] <= all[j][i])
-                    d = j;
-                else if (u != d)
-                {
-                    range[i].push_back(make_pair(u, d));
-                    u = j;
-                    d = j;
-                }
-                else
-                {
-                    u = j;
-                    d = j;
-                }
+                cin >> all[i][j];
+                mp[i][j] = 0;
+                if (i > 1)
+                    mp[i][j] = (all[i][j] >= all[i - 1][j]);
             }
-            if (u != d)
-                range[i].push_back(make_pair(u, d));
         }
-        for (int i = 0; i < m; i++)
-            for (auto j : range[i])
-                dfs(i, j.first, j.second, 1);
+
+        for (int i = 1; i <= m; i++)
+            h[i] = 0;
+
+        int ans = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= m; j++)
+            {
+                if (mp[i][j] == 0)
+                    h[j] = 1;
+                else
+                    h[j]++;
+            }
+            int tot = 0;
+            h[m + 1] = 0;
+            for (int j = 1; j <= m + 1; j++)
+            {
+                while (tot && h[que[tot]] > h[j])
+                {
+                    ans = max(ans, (j - que[tot - 1] - 1) * h[que[tot]]);
+                    tot--;
+                }
+                que[++tot] = j;
+            }
+        }
         cout << ans << "\n";
     }
 }
